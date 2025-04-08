@@ -1,0 +1,145 @@
+nav{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #fff;
+    box-shadow: 3px 4px 11px 1px #807e7e80;
+    position: sticky;
+    top: 0px;
+    margin-bottom: 30px;
+    z-index: 66;
+}
+.menu img{
+    height: 25px;
+    display: none;
+    cursor: pointer;
+}
+nav img{
+    width: 100px;
+
+}
+.catlog{
+    display: flex;
+    gap: 22px;
+    align-items: center;
+    padding:0px 8px ;
+    margin-right:5px ;
+}
+.catlog a{
+    text-decoration: none;   
+    color: rgba(47, 46, 46, 0.955); 
+    font-family: sans-serif;
+    font-size: 14px;
+}
+.catlog h4{
+    position: relative;
+
+}
+.catlog h4::after{
+    content: "";
+    position: absolute;
+    left: -60%;
+    bottom: -177%;
+    width: 0%;
+    height: 5px;
+    border-radius: 2px;
+    background-color: rgb(77, 183, 197);
+    transition: all ease-in-out 0s;
+}
+.catlog h4:hover::after{
+    left: 0;
+    width: 100%;
+}
+.catlog img{
+    width: 25px;
+}
+.search{
+    display:flex;
+    align-items: center;
+    border-radius: 5px;
+    background-color: #f5f5f6;
+    padding: 8px 10px;
+    gap: 6px;
+}
+
+input[type='text']{
+    width: 350px;
+    border: none;
+    background-color: #f5f5f6;
+    color: #696e79;
+    padding-block: none;
+    padding-inline: none;
+    padding-left: 10px;
+    margin: 0;
+    outline: none;
+    box-shadow: none;
+}
+
+.search img{
+    width: 25px;
+    color: #696e79;
+}
+
+
+
+.info h2{
+    font-size: 12px;
+    text-transform: uppercase;
+    
+    padding-bottom: 5px;
+}
+.info h4{
+    font-size: 13px;
+    padding: 5px;
+    color: #6f7175;
+}
+
+.profile {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px 15px;
+    /* background-color: #2cebbf; */
+    color: white;
+    border-radius: 8px;
+    font-weight: 600;
+    color: black;
+  }
+  
+  .auth-dropdown {
+    display: none; /* Default hidden */
+    position: absolute;
+    top: 100%; /* Appears just below .profile */
+    right:60px;
+    margin-top: 8px;
+    background-color: white;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    padding: 10px;
+    z-index: 100;
+    min-width: 120px;
+  }
+  
+  .auth-dropdown a {
+    text-decoration: none;
+    display: block;
+    margin: 5px 0;
+  }
+  
+  .auth-dropdown button {
+    width: 100%;
+    padding: 10px;
+    background-color: #2cebbf;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .auth-dropdown button:hover {
+    background-color: #26cfa6;
+  }
+  
