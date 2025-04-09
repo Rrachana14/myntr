@@ -142,4 +142,8 @@ input[type='text']{
   .auth-dropdown button:hover {
     background-color: #26cfa6;
   }
+  .bag-link {
+    text-decoration: none;
+    color: inherit;
+  }
   

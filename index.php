@@ -1,4 +1,8 @@
 <?php
+// Only set custom session path if running on Azure
+if (strpos($_SERVER['DOCUMENT_ROOT'], '/home/site/wwwroot') !== false) {
+  ini_set('session.save_path', '/home/site/phpsessions');
+}
 session_start();
 ?>
 
@@ -19,10 +23,10 @@ session_start();
         <img src="https://myntrastorage1234.blob.core.windows.net/product-images/cross-svgrepo-com.svg" class="cross" alt="cross" />
       </div>
       <div class="catlogL">
-        <h4><a href="#">Men</a></h4>
-        <h4><a href="#">Women</a></h4>
-        <h4><a href="#">Kids</a></h4>
-        <h4><a href="#">Home and Living</a></h4>
+        <h4><a href="products.php">Men</a></h4>
+        <h4><a href="products.php">Women</a></h4>
+        <h4><a href="products.php">Kids</a></h4>
+        <h4><a href="products.php">Home and Living</a></h4>
         <h4><a href="products.php">Beauty</a></h4>
         <hr />
       </div>
@@ -41,12 +45,12 @@ session_start();
         <div class="menu"><img src="https://myntrastorage1234.blob.core.windows.net/product-images/menu-svgrepo-com.svg" /></div>
         <img src="https://myntrastorage1234.blob.core.windows.net/product-images/Myntra-logo.svg" alt="logo" class="logo" />
         <div class="catlog">
-          <h4><a href="#">MEN</a></h4>
-          <h4><a href="#">WOMEN</a></h4>
-          <h4><a href="#">KIDS</a></h4>
-          <h4><a href="#">HOME & LIVING</a></h4>
+          <h4><a href="products.php">MEN</a></h4>
+          <h4><a href="products.php">WOMEN</a></h4>
+          <h4><a href="products.php">KIDS</a></h4>
+          <h4><a href="products.php">HOME & LIVING</a></h4>
           <h4><a href="products.php">BEAUTY</a></h4>
-          <h4><a href="#">STUDIO</a></h4>
+          <h4><a href="products.php">STUDIO</a></h4>
         </div>
         <div class="search">
           <img src="./images/search-4-svgrepo-com.svg" alt="search" />
@@ -80,17 +84,19 @@ session_start();
             <img src="https://myntrastorage1234.blob.core.windows.net/product-images/heart-svgrepo-com.svg" alt="heart" />
             <h6>Wishlist</h6>
           </div>
+          <a href="cart.html" class="bag-link">
           <div class="bag">
             <img src="https://myntrastorage1234.blob.core.windows.net/product-images/bag-shopping-svgrepo-com.svg" alt="bag" />
             <h6>Bag</h6>
           </div>
+          </a>
         </div>
       </nav>
       <div class="hero">
         <div class="slider">
-          <img src="./images/heroimg1.webp" class="active" alt="heroimg" />
-          <img src="./images/heroimg2.webp" alt="heroimg" />
-          <img src="./images/heroimg3.webp" alt="heroimg" />
+          <img src="https://myntrastorage1234.blob.core.windows.net/product-images/heroimg1.webp" class="active" alt="heroimg" />
+          <img src="https://myntrastorage1234.blob.core.windows.net/product-images/heroimg2.webp" alt="heroimg" />
+          <img src="https://myntrastorage1234.blob.core.windows.net/product-images/heroimg3.webp" alt="heroimg" />
         </div>
         <div class="dotsContainer">
           <div class="dot active" attr="0" onclick="switchImage(this)"></div>

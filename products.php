@@ -11,6 +11,15 @@
 <body>
 
 <?php
+// if (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === "off") {
+//   $redirect = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+//   header("Location: $redirect");
+//   exit;
+// }
+// Only set custom session path if running on Azure
+if (strpos($_SERVER['DOCUMENT_ROOT'], '/home/site/wwwroot') !== false) {
+  ini_set('session.save_path', '/home/site/phpsessions');
+}
 session_start();
 include 'nav.php';
 $loggedIn = isset($_SESSION['user']); // Check if the user is logged in
@@ -69,7 +78,7 @@ $loggedIn = isset($_SESSION['user']); // Check if the user is logged in
 <div class="popup" id="loginPopup">
   <h3>Login Required</h3>
   <p>You need to log in to add items to your cart.</p>
-  <button onclick="location.href='login.php'">Go to Login</button>
+  <button onclick="location.href='login.html'">Go to Login</button>
   <button onclick="closePopup()">Cancel</button>
 </div>
 
@@ -82,7 +91,7 @@ $loggedIn = isset($_SESSION['user']); // Check if the user is logged in
 
 <script>
   const isLoggedIn = <?php echo json_encode($loggedIn); ?>;
-
+  
   function handleAddToCart() {
     if (!isLoggedIn) {
       // Show login popup if not logged in

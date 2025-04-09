@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart - ShopZone</title>
+  <link rel="stylesheet" href="nav.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      background-color: #f8f9fa;
+      /* padding: 40px; */
+    }
+
+    .container {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 0 30px;
+    }
+
+    .cart-items {
+      flex: 2;
+      /* max-width: 700px; */
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: transform 0.2s ease;
+    }
+
+    .cart-item:hover {
+      transform: translateY(-3px);
+    }
+
+    .cart-item img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-right: 20px;
+    }
+
+    .item-details {
+      flex: 1;
+    }
+
+    .item-details h4 {
+      font-size: 1.2em;
+      margin-bottom: 8px;
+    }
+
+    .item-details p {
+      color: #666;
+      font-size: 0.95em;
+    }
+
+    .item-price {
+      font-weight: bold;
+      margin-top: 5px;
+      color: #222;
+    }
+
+    .quantity-control {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .quantity-control button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .quantity-control input {
+      width: 40px;
+      text-align: center;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 5px;
+    }
+
+    .delete-btn {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: background-color 0.2s ease;
+    }
+
+    .delete-btn:hover {
+      background-color: #c82333;
+    }
+
+    .summary {
+      flex: 1;
+      max-width: 350px;
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      height: fit-content;
+    }
+
+    .summary h3 {
+      margin-bottom: 20px;
+      font-size: 1.3em;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+    }
+
+    .summary p {
+      margin: 10px 0;
+      font-size: 1em;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .checkout-btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      margin-top: 20px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .checkout-btn:hover {
+      background-color: #0056b3;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+    <nav>
+        <div class="menu"><img src="https://myntrastorage1234.blob.core.windows.net/product-images/menu-svgrepo-com.svg" /></div>
+        <img src="https://myntrastorage1234.blob.core.windows.net/product-images/Myntra-logo.svg" alt="logo" class="logo" />
+        <div class="catlog">
+          <h4><a href="products.php">MEN</a></h4>
+          <h4><a href="products.php">WOMEN</a></h4>
+          <h4><a href="products.php">KIDS</a></h4>
+          <h4><a href="products.php">HOME & LIVING</a></h4>
+          <h4><a href="products.php">BEAUTY</a></h4>
+          <h4><a href="products.php">STUDIO</a></h4>
+        </div>
+        <div class="search">
+          <img src="https://myntrastorage1234.blob.core.windows.net/product-images/search-4-svgrepo-com.svg" alt="search" />
+          <input type="text" placeholder="Search for products, brand and more" />
+        </div>
+        <div class="catlog">
+          <div class="profile" onclick="toggleAuthStatus()">
+            <img src="https://myntrastorage1234.blob.core.windows.net/product-images/profile-svgrepo-com.svg" />
+            <h6 id="profileText">profile</h6>
+          </div>
+      
+          
+          <div class="whislist">
+            <img src="https://myntrastorage1234.blob.core.windows.net/product-images/heart-svgrepo-com.svg" alt="heart" />
+            <h6>Wishlist</h6>
+          </div>
+          <a href="cart.html" class="bag-link">
+          <div class="bag">
+            <img src="https://myntrastorage1234.blob.core.windows.net/product-images/bag-shopping-svgrepo-com.svg" alt="bag" />
+            <h6>Bag</h6>
+          </div>
+          </a>
+        </div>
+      </nav>
+      
+
+<div class="container">
+  <!-- CART ITEMS -->
+  <div class="cart-items" id="cartItems">
+    <div class="cart-item" data-price="499">
+      <img src="https://myntrastorage1234.blob.core.windows.net/product-images/lipstick.jpeg" alt="Product" />
+      <div class="item-details">
+        <h4>Matte Lipstick</h4>
+        <p>Long-lasting, vibrant color</p>
+        <p class="item-price">₹<span class="total-price">499</span></p>
+        <div class="quantity-control">
+          <button onclick="updateQuantity(this, -1)">−</button>
+          <input type="number" value="1" min="1" readonly />
+          <button onclick="updateQuantity(this, 1)">+</button>
+        </div>
+      </div>
+      <button class="delete-btn" onclick="deleteItem(this)">Delete</button>
+    </div>
+
+    <div class="cart-item" data-price="799">
+      <img src="https://myntrastorage1234.blob.core.windows.net/product-images/foundation.jpeg" alt="Product" />
+      <div class="item-details">
+        <h4>Liquid Foundation</h4>
+        <p>Full coverage, hydrating formula</p>
+        <p class="item-price">₹<span class="total-price">799</span></p>
+        <div class="quantity-control">
+          <button onclick="updateQuantity(this, -1)">−</button>
+          <input type="number" value="1" min="1" readonly />
+          <button onclick="updateQuantity(this, 1)">+</button>
+        </div>
+      </div>
+      <button class="delete-btn" onclick="deleteItem(this)">Delete</button>
+    </div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="summary" id="summary">
+    <h3>Purchase Summary</h3>
+    <p><span>Items:</span> <span id="totalItems">2</span></p>
+    <p><span>Subtotal:</span> <span id="subtotal">₹1298</span></p>
+    <p><span>Shipping:</span> <span>Free</span></p>
+    <hr style="margin: 15px 0;">
+    <p><strong>Total:</strong> <strong id="total">₹1298</strong></p>
+    <button class="checkout-btn">Proceed to Checkout</button>
+  </div>
+</div>
+
+<script>
+  function deleteItem(button) {
+    const item = button.closest('.cart-item');
+    item.remove();
+    updateSummary();
+  }
+
+  function updateQuantity(button, change) {
+    const quantityInput = button.parentElement.querySelector('input');
+    let quantity = parseInt(quantityInput.value);
+    quantity = Math.max(1, quantity + change);
+    quantityInput.value = quantity;
+
+    const item = button.closest('.cart-item');
+    const basePrice = parseInt(item.getAttribute('data-price'));
+    const totalPriceEl = item.querySelector('.total-price');
+    totalPriceEl.textContent = basePrice * quantity;
+
+    updateSummary();
+  }
+
+  function updateSummary() {
+    const cartItems = document.querySelectorAll('.cart-item');
+    let subtotal = 0;
+    let totalItems = 0;
+
+    cartItems.forEach(item => {
+      const price = parseInt(item.querySelector('.total-price').textContent);
+      const quantity = parseInt(item.querySelector('input').value);
+      subtotal += price;
+      totalItems += quantity;
+    });
+
+    document.getElementById('subtotal').textContent = `₹${subtotal}`;
+    document.getElementById('total').textContent = `₹${subtotal}`;
+    document.getElementById('totalItems').textContent = totalItems;
+  }
+</script>
+
+</body>
+</html>
